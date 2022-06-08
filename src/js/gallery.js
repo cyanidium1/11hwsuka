@@ -23,7 +23,7 @@ const onSearchFormSubmit = async event => {
       );
       loadMoreBtnEl.style.display = 'none';
     } 
-    else if (data.hits.length > 40) {
+    else if (data.hits.length > 39) {
       Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       makeMarkup(data.hits);
       lightbox.refresh();
