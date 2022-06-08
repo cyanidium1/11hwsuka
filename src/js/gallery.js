@@ -22,14 +22,19 @@ const onSearchFormSubmit = async event => {
         'Sorry, there are no images matching your search query. Please try again.'
       );
       loadMoreBtnEl.style.display = 'none';
-    } else {
+    } 
+    else if (data.hits.length > 40) {
+      Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
+      makeMarkup(data.hits);
+      lightbox.refresh();
+      loadMoreBtnEl.style.display = 'block';
+    } 
+    else {
       Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
       makeMarkup(data.hits);
       lightbox.refresh();
       loadMoreBtnEl.style.display = 'none';
-      if (data.hits.length > 40) {
-        loadMoreBtnEl.style.display = 'block';
-      }
+      
     }
   } catch (error) {
     console.log('error :', error);
