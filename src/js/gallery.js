@@ -27,7 +27,9 @@ const onSearchFormSubmit = async event => {
       makeMarkup(data.hits);
       lightbox.refresh();
       loadMoreBtnEl.style.display = 'none';
-      loadMoreBtnEl.style.display = 'block';
+      if (data.hits.length > 40) {
+        loadMoreBtnEl.style.display = 'block';
+      }
     }
   } catch (error) {
     console.log('error :', error);
